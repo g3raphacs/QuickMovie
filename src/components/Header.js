@@ -7,9 +7,10 @@ class Header extends Component {
     render(){
         return (
             <div className="header">
-                <FontAwesome className="header--movie" name="film" size="5x"/>
-                <h3>QuickMovie</h3>
-                <FontAwesome className="header--heart" name="heart" size="5x"/>
+                <div className="logo"
+                    style = {{backgroundImage: `url(${this.props.imgSrc})`, height: "55px", width: "400px", backgroundRepeat: 'no-repeat'}}
+                ></div>
+                <FontAwesome className="header--heart" name="heart" size="3x"/>
                 <div className="header--badge">{this.props.badge}</div>
             </div>
         )

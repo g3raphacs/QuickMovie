@@ -24,13 +24,14 @@ html {
   box-sizing: border-box;
 }
 body {
-  font-family: "Wicked Scary Movie", Helvetica, Arial, sans-serif !important;
+  /* font-family: "Wicked Scary Movie", Helvetica, Arial, sans-serif !important; */
+  background-color: black;
 }
 div {
   overflow: hidden;
 }
 h3 {
-  font-family: "28 Days Later" !important;
+  /* font-family: "28 Days Later" !important; */
 }
 .app {
   display: flex;
@@ -39,6 +40,6 @@ h3 {
   height: 100%;
 }
 .fa-faSpinner {
-  color: #a81818;
+  color: #ce21ff;
   margin: 10rem auto;
 }
