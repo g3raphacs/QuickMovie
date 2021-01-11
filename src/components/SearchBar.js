@@ -12,6 +12,7 @@ class SearchBar extends Component{
     }
 
     render(){
+        const { value } = this.state;
         return(
             <div className="searchBar--container">
                 <div className="searchBar">
@@ -22,8 +23,11 @@ class SearchBar extends Component{
                         value={this.state.value}
                         onChange={this.handleChange}
                     />
-                    <div className="searchBar--submit">
-                    <FontAwesome className="header--search" name="search" size="2x"/>
+                    <div
+                        onClick={() => this.props.onSearchClick(value)}
+                        className="searchBar--submit"
+                    >
+                        <FontAwesome className="header--search" name="search" size="2x"/>
                     </div>
                 </div>
             </div>

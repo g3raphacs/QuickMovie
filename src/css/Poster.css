@@ -5,18 +5,16 @@
 }
 .poster--img {
   width: 100%;
+  transition: ease-in-out 1000ms;
 }
-.poster:hover {
-  border: 2px solid violet;
-}
-.poster .poster--img{
-  transition: ease-in-out 3000ms;
-}
-.poster:hover .poster--img{
+.poster--img.hovered{
   height:120%;
   overflow: hidden;
   object-fit: cover;
-  transition: ease-in-out 8000ms;
+  
+}
+.poster:hover {
+  border: 1px solid violet;
 }
 .poster--overlay {
   position: absolute;
@@ -24,18 +22,20 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(212deg, rgba(75,0,140,0.6) 36%, rgba(0,0,0,0.3) 83%);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-start;
 }
-.poster--icon {
-  color: violet;
+.poster--icon , .poster--icon-no {
+  color: white;
   margin-top: 15px;
   margin-right: 15px;
 }
-.poster--icon:hover {
+
+.poster--icon:hover , .poster--icon-no:hover {
+  color: violet;
   cursor: pointer;
 }
 .poster--overlay__text {

@@ -53,7 +53,14 @@ class App extends Component {
     activePage: 0,
     totalPages: 0,
     searchText: ""
-
+  }
+  handleSearch = (value) => {
+    //lancer la recherche
+    console.log('handlesearch', value);
+  }
+  loadMore = () => {
+    //lancer une requète
+    console.log('load more');
   }
   render(){
     return (
@@ -61,6 +68,8 @@ class App extends Component {
         <Header imgSrc="images/quickmovie.svg" />
         <Home
           {...this.state}
+          onSearchClick={this.handleSearch}
+          onButtonClick={this.loadMore}
         />
       </div>
     );
