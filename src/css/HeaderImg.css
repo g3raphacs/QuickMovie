@@ -1,18 +1,19 @@
 .headerImg {
+  background-image:linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73));
   margin-top: 55px;
   width: 100vw;
-  height: 110vh;
-  background-size: 100%, cover !important;
-  /* background-position: center, center !important; */
+  height: 90vh;
+  background-size: cover !important;
+  background-position: top, center !important;
   position: relative;
-  object-fit: cover;
-  /* background-position: center, center !important; */
+  /* object-fit: cover !important; */
+  background-position: top, center !important;
 }
 .headerImg--overlay {
   position: absolute;
   background: rgba(0, 0, 0, 0.3);
   color: white;
-  top: 25rem;
+  top: 35vh;
   width: 40%;
   /* height: 45%; */
   height: auto;
@@ -23,16 +24,21 @@
   align-items: center;
 }
 .headerImg--overlay__title {
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   font-weight: bold;
   padding-bottom: 0.5rem;
-  border-bottom: 0.7rem solid #d8a860;
+  border-bottom: 0.4rem solid violet;
   align-self: flex-start;
 }
 .headerImg--overlay__desc {
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   text-align: justify;
-  line-height: 2.3rem;
+  line-height: 2.8rem;
   font-weight: 100;
   padding-top: 2rem;
+}
+.headerImg--gradient{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,rgba(0,0,0,0) , rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%);
 }

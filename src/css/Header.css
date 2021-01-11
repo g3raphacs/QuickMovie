@@ -10,38 +10,40 @@
   color: #fff;
   position: fixed;
   top: 0;
+  padding: 0 20px;
   /* padding: 0 1.5rem; */
+  box-shadow: 0px 4px 10px violet;
 }
 .header h3 {
   font-weight: bold;
   font-size: 2.7rem;
 }
-.header--movie {
-  color: #fff;
-  margin-left: 2rem;
-}
-.header--heart {
-  color: white;
-  margin-right: 2rem;
-  cursor: pointer;
-}
+
 .header--container {
   position: relative;
 }
-.header--badge {
-  position: absolute;
+.header--logo{
+  height: 45px;
+  width: 200px; 
+  background-repeat: no-repeat;
+}
+
+.header--left , .header--right{
   display: flex;
-  justify-content: center;
+}
+.header--left .header--menu ul{
   align-items: center;
-  min-width: 2rem;
-  height: 2rem;
-  border-radius: 1.3rem;
-  color: white;
-  right: 0;
-  bottom: 0.3rem;
-  font-weight: bolder;
-  font-size: 1.5rem;
-  margin-right: 40px;
-  padding: 3px;
-  background-color: #ce21ff;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  font-size: 1.6rem;
+  list-style: none;
+}
+.header--left .header--menu ul li{
+  display: block;
+  padding: 4px 1vw;
+}
+.header--left .header--menu ul li:hover{
+  cursor: pointer;
+  color:violet
 }

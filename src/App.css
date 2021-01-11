@@ -18,20 +18,24 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+  width: 100%;
 }
 body {
-  /* font-family: "Wicked Scary Movie", Helvetica, Arial, sans-serif !important; */
+  font-family: "Roboto Condensed", Helvetica, Arial, sans-serif !important;
+  font-weight: 300;
   background-color: black;
+  width: 100%;
 }
 div {
   overflow: hidden;
 }
 h3 {
-  /* font-family: "28 Days Later" !important; */
+  font-family: "Roboto" !important;
 }
 .app {
   display: flex;

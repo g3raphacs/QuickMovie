@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import FontAwesome from 'react-fontawesome';
+
 
 import '../css/Header.css';
+import { SearchButton } from './SearchButton';
 
 class Header extends Component {
     render(){
         return (
             <div className="header">
-                <div className="logo"
-                    style = {{backgroundImage: `url(${this.props.imgSrc})`, height: "55px", width: "400px", backgroundRepeat: 'no-repeat'}}
-                ></div>
-                <FontAwesome className="header--heart" name="heart" size="3x"/>
-                <div className="header--badge">{this.props.badge}</div>
+                <div className="header--left">
+                    <a href="#" className="header--logo"
+                        style = {{backgroundImage: `url(${this.props.imgSrc})`}}
+                    ></a>
+                    <nav className="header--menu">
+                        <ul>
+                            <li>Series</li>
+                            <li>Films</li>
+                            <li>Nouveautés</li>
+                            <li>Ma liste</li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div className="header--right">
+                    <SearchButton/>
+                </div>
+                
             </div>
         )
     }

@@ -8,6 +8,7 @@ class HeaderImg extends Component {
             <div className="headerImg"
                 style = {{backgroundImage: `url(${this.props.imgSrc})`, backgroundRepeat: 'no-repeat'}}
             >
+                <div className="headerImg--gradient"></div>
                 <div className="headerImg--overlay">
                     <h3 className="headerImg--overlay__title">{this.props.title}</h3>
                     <p className="headerImg--overlay__desc">{this.props.overview}</p>

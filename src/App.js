@@ -6,7 +6,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Header badge={15} imgSrc="images/quickmovie.svg" />
+        <Header imgSrc="images/quickmovie.svg" />
         <Home/>
       </div>
     );
