@@ -1,10 +1,9 @@
 .loadButton {
   margin: 0 auto;
   margin-bottom: 3.5rem;
-  border: 3px solid #781818;
-  background: #901818;
+  background: violet;
   width: 87vw;
-  height: 5rem;
+  height: 40px;
   color: white;
   display: flex;
   justify-content: center;
@@ -13,9 +12,16 @@
   border-radius: 0.5rem;
 }
 .loadButton--text {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  text-transform: uppercase;
 }
 .loadButton:hover {
   opacity: 0.9;
+}
+.spinnerBox{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
 }
