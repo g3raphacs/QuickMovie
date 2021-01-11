@@ -7,8 +7,23 @@ class SearchBar extends Component{
         value: "",
     }
 
+    componentDidUpdate(){
+        const searchBar = document.querySelector('.searchBar--container')
+        if(this.props.searching){
+            searchBar.classList.add('deployed');
+        }else{
+            searchBar.classList.remove('deployed');
+        }
+    }
+
     handleChange = (e) => {
         this.setState({ value: e.target.value });
+    }
+    handleKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            console.log('yes')
+            this.props.onSearchClick(e.target.value);
+        }
     }
 
     render(){
@@ -22,6 +37,7 @@ class SearchBar extends Component{
                         placeholder="Rechercher"
                         value={this.state.value}
                         onChange={this.handleChange}
+                        onKeyUp={this.handleKeyPress}
                     />
                     <div
                         onClick={() => this.props.onSearchClick(value)}

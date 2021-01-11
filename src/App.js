@@ -8,6 +8,7 @@ import {API_URL , API_KEY, IMAGE_BASE_URL ,BACKDROP_SIZE, POSTER_SIZE} from './c
 
 class App extends Component {
   state = {
+    searching:false,
     loading: false,
     movies: [
       {
@@ -59,10 +60,11 @@ class App extends Component {
     searchText: ""
   }
 
+
+
   async componentDidMount() {
     try {
       const { data : { results, page, total_pages }} = await this.loadMovies();
-      console.log('res' , results);
       this.setState({
         movies: results,
         loading: false,
@@ -72,20 +74,60 @@ class App extends Component {
         mTitle: results[0].title,
         mDesc: results[0].overview
       })
+
+      window.addEventListener('scroll', this.handleScroll);
+
     } catch(e){
       console.log('e' , e)
     }
   }
 
+  handleScroll = () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        console.log("you're at the bottom of the page");
+        this.loadMore();
+      }
+  }
+
+  toggleSearchButton = () => {
+    const toggle = !this.state.searching;
+    this.setState({searching: toggle})
+  }
   loadMovies = () => {
     const page = this.state.activePage +1;
     const url = `${API_URL}/movie/popular?api_key=${API_KEY}&page=${page}&language=fr`;
     return axios.get(url);
   }
 
+  searchMovie = () => {
+    const url = `${API_URL}/search/movie?api_key=${API_KEY}&query=${this.state.searchText}&language=fr`;
+    return axios.get(url);
+  }
+
   handleSearch = (value) => {
     //lancer la recherche
-    console.log('handlesearch', value);
+    try {
+      this.setState({
+        searching: false,
+        loading: true,
+        searchText: value,
+        image: null
+      }, async () => {
+        const { data : { results, page, total_pages }} = await this.searchMovie();
+        console.log('res' , results);
+        this.setState({
+          movies: results,
+          loading: false,
+          activePage: page,
+          totalPages: total_pages,
+          image: `${IMAGE_BASE_URL}/${BACKDROP_SIZE}/${results[0].backdrop_path}`,
+          mTitle: results[0].title,
+          mDesc: results[0].overview
+        })
+      })
+    } catch(e){
+      console.log('e' , e)
+    }
   }
 
   loadMore = async () => {
@@ -109,14 +151,14 @@ class App extends Component {
     console.log('load more');
   }
 
+
   render(){
     return (
       <div className="App">
-        <Header imgSrc="images/quickmovie.svg" />
+        <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc="images/quickmovie.svg" />
         <Home
           {...this.state}
           onSearchClick={this.handleSearch}
-          onButtonClick={this.loadMore}
         />
       </div>
     );

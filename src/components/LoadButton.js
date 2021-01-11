@@ -16,9 +16,7 @@ class LoadButton extends Component{
                     <Spinner/>
                 </div>
             ) : (
-                <div onClick={this.props.onButtonClick} className="loadButton">
-                    <FontAwesome className="header--search" name="angle-down" size="2x"/>
-                </div>
+                <div className="loadButton"></div>
             )}
             </>
         )

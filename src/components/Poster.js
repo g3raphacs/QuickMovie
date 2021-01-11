@@ -28,7 +28,12 @@ class Poster extends Component {
     }
 
     render(){
+        const lastFour = this.props.imgSrc.substr(this.props.imgSrc.length - 4)
+        if(lastFour === "null"){
+                return null;
+        }
         return(
+            
             <div
                 onMouseEnter={this.showOverlay}
                 onMouseLeave={this.hideOverlay}

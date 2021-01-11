@@ -4,7 +4,7 @@ import { HeaderImg, SearchBar, PosterList, LoadButton } from '../components';
 
 class Home extends Component{
     render(){
-        const { mTitle, mDesc, image, movies, loading } = this.props;
+        const { mTitle, mDesc, image, movies, loading, searching } = this.props;
         return(
             <div>
                 <HeaderImg
@@ -13,8 +13,8 @@ class Home extends Component{
                     imgSrc={image}
                 />
                 <PosterList movies={movies}/>
-                <LoadButton onButtonClick={this.props.onButtonClick} loading={loading}/>
-                <SearchBar onSearchClick={this.props.onSearchClick}/>
+                <LoadButton loading={loading}/>
+                <SearchBar searching={searching} onSearchClick={this.props.onSearchClick}/>
             </div>
         )
     }

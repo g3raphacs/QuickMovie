@@ -6,6 +6,7 @@ import { SearchButton } from './SearchButton';
 
 class Header extends Component {
     render(){
+        const { searching } = this.props;
         return (
             <div className="header">
                 <div className="header--left">
@@ -23,7 +24,7 @@ class Header extends Component {
                 </div>
                 
                 <div className="header--right">
-                    <SearchButton/>
+                    <SearchButton onSearchButton={this.props.onSearchButton} searching={searching}/>
                 </div>
                 
             </div>
