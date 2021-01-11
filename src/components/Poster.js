@@ -34,7 +34,7 @@ class Poster extends Component {
                 onMouseLeave={this.hideOverlay}
                 className="poster"
             >
-                <img className="poster--img hovered" src={this.props.imgSrc} alt="poster"/>
+                <img className="poster--img hovered" src={this.props.imgSrc}/>
                 {this.state.hover ? (
                     <div className="poster--overlay">
                         {this.props.whished ? (

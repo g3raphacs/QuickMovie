@@ -88,7 +88,23 @@ class App extends Component {
     console.log('handlesearch', value);
   }
 
-  loadMore = () => {
+  loadMore = async () => {
+    try{
+      this.setState({ loading: true })
+      const { data : { results, page, total_pages }} = await this.loadMovies();
+      console.log('res' , results);
+      this.setState({
+        movies: [...this.state.movies, ...results],
+        loading: false,
+        activePage: page,
+        totalPages: total_pages,
+        image: `${IMAGE_BASE_URL}/${BACKDROP_SIZE}/${results[0].backdrop_path}`,
+        mTitle: results[0].title,
+        mDesc: results[0].overview
+      })
+    } catch(e) {
+      console.log('error load more', e);
+    }
     //lancer une requète
     console.log('load more');
   }
