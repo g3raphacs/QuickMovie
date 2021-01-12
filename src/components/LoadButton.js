@@ -13,9 +13,7 @@ class LoadButton extends Component{
         return(
             <>
             {this.props.loading ? (
-                <div className="spinnerBox">
                     <Spinner/>
-                </div>
             ) : (
                 <div className="loadButton"></div>
             )}

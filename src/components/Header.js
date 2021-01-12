@@ -10,7 +10,7 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="header--left">
-                    <a href="#" className="header--logo"
+                    <a href="/" className="header--logo"
                         style = {{backgroundImage: `url(${this.props.imgSrc})`}}
                     ></a>
                     <nav className="header--menu">

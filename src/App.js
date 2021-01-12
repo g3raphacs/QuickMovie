@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router , Route, Switch, Link } from 'react-router-dom';
 
-import { Header } from './components';
-import { Home } from './routes';
+import { Header ,LoadButton } from './components';
+import { Home, Details, NotFound } from './routes';
 import './App.css';
-import {API_URL , API_KEY, IMAGE_BASE_URL ,BACKDROP_SIZE, POSTER_SIZE} from './config'
+import {API_URL , API_KEY, IMAGE_BASE_URL ,BACKDROP_SIZE} from './config'
 
 class App extends Component {
   state = {
@@ -13,52 +13,11 @@ class App extends Component {
     scrollY: 0,
     newLoad: false,
     searching:false,
-    loading: false,
-    movies: [
-      {
-        backdrop_path: './images/Fast_large.jpg',
-        id: 475557,
-        overview:
-          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        poster_path: './images/Fast_small.jpg',
-        title: "Fast and Furious"
-      },
-      {
-        backdrop_path: './images/Fast_large.jpg',
-        id: 475558,
-        overview:
-          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        poster_path: './images/Fast_small.jpg',
-        title: "Fast and Furious"
-      },
-      {
-        backdrop_path: './images/Fast_large.jpg',
-        id: 475559,
-        overview:
-          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        poster_path: './images/Fast_small.jpg',
-        title: "Fast and Furious"
-      },
-      {
-        backdrop_path: './images/Fast_large.jpg',
-        id: 475560,
-        overview:
-          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        poster_path: './images/Fast_small.jpg',
-        title: "Fast and Furious"
-      },
-      {
-        backdrop_path: './images/Fast_large.jpg',
-        id: 475561,
-        overview:
-          "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        poster_path: './images/Fast_small.jpg',
-        title: "Fast and Furious"
-      },
-    ],
-    image: './images/Fast_large.jpg',
-    mTitle: 'Fast and Furious',
-    mDesc: 'Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum',
+    loading: true,
+    movies: [],
+    image: null,
+    mTitle: '',
+    mDesc: '',
     activePage: 0,
     totalPages: 0,
     searchText: ""
@@ -67,6 +26,7 @@ class App extends Component {
 
 
   async componentDidMount() {
+    console.log('root' , window.location.origin);
     try {
       const { data : { results, page, total_pages }} = await this.loadMovies();
       this.setState({
@@ -161,15 +121,27 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc="images/quickmovie.svg" />
+          <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc= {'/images/quickmovie.svg'} />
+          {!this.state.image ? (
+              <LoadButton/>
+          ) : (
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <Home
                   {...this.state}
                   onSearchClick={this.handleSearch}
                 />
             </Route>
+
+            <Route exact path="/:id">
+              <Details/>
+            </Route>
+
+            <Route>
+                <NotFound/>
+            </Route>
           </Switch>
+          )}
         </div>
       </Router>
     );

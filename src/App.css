@@ -29,6 +29,7 @@ body {
   font-family: "Roboto Condensed", Helvetica, Arial, sans-serif !important;
   font-weight: 300;
   background-color: rgb(15, 15, 15);
+  color:white;
   width: 100%;
 }
 div {
@@ -50,5 +51,14 @@ h3 {
 .stop-scrolling { 
   height: 100%; 
   overflow-y: hidden; 
-} 
+}
+
+.page404{
+  width:100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
 

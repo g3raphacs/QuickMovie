@@ -6,12 +6,14 @@ library.add(faSpinner);
 
 const Spinner = (props) => {
         return(
-            <FontAwesomeIcon
-                icon="spinner"
-                pulse
-                size="3x"
-                className="fa-faSpinner"
-            />
+            <div className="spinnerBox">
+                <FontAwesomeIcon
+                    icon="spinner"
+                    pulse
+                    size="3x"
+                    className="fa-faSpinner"
+                />
+            </div>
         )
 }
 
