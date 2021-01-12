@@ -26,7 +26,6 @@ class App extends Component {
 
 
   async componentDidMount() {
-    console.log('root' , window.location.origin);
     try {
       const { data : { results, page, total_pages }} = await this.loadMovies();
       this.setState({
@@ -123,7 +122,9 @@ class App extends Component {
         <div className="App">
           <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc= {'/images/quickmovie.svg'} />
           {!this.state.image ? (
-              <LoadButton/>
+            <div className="fullscreenLoad">
+              <LoadButton loading={this.state.loading}/>
+            </div>
           ) : (
           <Switch>
             <Route exact path="/">
@@ -133,8 +134,8 @@ class App extends Component {
                 />
             </Route>
 
-            <Route exact path="/:id">
-              <Details/>
+            <Route exact path="/:id" render={(props)=><Details {...props}/>}>
+              
             </Route>
 
             <Route>

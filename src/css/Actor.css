@@ -1,8 +1,9 @@
 .actor {
   margin: 2%;
-  width: 20%;
+  width: 10%;
   position: relative;
 }
+
 .actor--img {
   width: 100%;
 }
@@ -12,16 +13,17 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(30deg, rgba(75,0,140,0.6) 36%, rgba(0,0,0,0.3) 83%);
+  border: 1px solid violet;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .actor--name {
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: white;
-  font-weight: bolder;
+  font-weight: 900;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
 }

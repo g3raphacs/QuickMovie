@@ -1,8 +1,9 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import '../css/stars.css';
 
 const Stars = props => {
-    renderStars1 = () => {
+    const renderStars1 = () => {
         return props.fakeArray1.map((element, i) => {
             return(
                 <FontAwesome
@@ -14,7 +15,7 @@ const Stars = props => {
             )
         })
     }
-    renderStars2 = () => {
+    const renderStars2 = () => {
         return props.fakeArray2.map((element, i) => {
             return(
                 <FontAwesome

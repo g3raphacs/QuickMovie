@@ -53,7 +53,7 @@ h3 {
   overflow-y: hidden; 
 }
 
-.page404{
+.page404 , .fullscreenLoad{
   width:100vw;
   height: 100vh;
   display: flex;

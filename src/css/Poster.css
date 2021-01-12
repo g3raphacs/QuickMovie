@@ -31,8 +31,7 @@
 }
 .poster--icon , .poster--icon-no {
   color: white;
-  margin-top: 15px;
-  margin-right: 15px;
+  padding: 15px;
 }
 
 .poster--icon:hover , .poster--icon-no:hover {
@@ -44,4 +43,9 @@
   font-weight: bold;
   font-size: 2rem;
   color: white;
+}
+.poster--overlay_link{
+  display: block;
+  width:100%;
+  height:100%;
 }

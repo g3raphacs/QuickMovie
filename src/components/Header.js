@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 import '../css/Header.css';
@@ -10,9 +11,12 @@ class Header extends Component {
         return (
             <div className="header">
                 <div className="header--left">
-                    <a href="/" className="header--logo"
+                    <Link to={{ pathname: "/"}}>
+                        <div className="header--logo"
                         style = {{backgroundImage: `url(${this.props.imgSrc})`}}
-                    ></a>
+                        ></div>
+                    </Link>
+                    
                     <nav className="header--menu">
                         <ul>
                             <li>Series</li>
