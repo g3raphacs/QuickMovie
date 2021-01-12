@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router , Route, Switch, Link } from 'react-router-dom';
 
 import { Header } from './components';
 import { Home } from './routes';
@@ -8,6 +9,9 @@ import {API_URL , API_KEY, IMAGE_BASE_URL ,BACKDROP_SIZE, POSTER_SIZE} from './c
 
 class App extends Component {
   state = {
+    scrollX: 0,
+    scrollY: 0,
+    newLoad: false,
     searching:false,
     loading: false,
     movies: [
@@ -83,10 +87,13 @@ class App extends Component {
   }
 
   handleScroll = () => {
+    if(!this.state.loading){
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        console.log("you're at the bottom of the page");
         this.loadMore();
       }
+    }else{
+      window.scrollTo(this.state.scrollX, this.state.scrollY);
+    }
   }
 
   toggleSearchButton = () => {
@@ -133,8 +140,8 @@ class App extends Component {
   loadMore = async () => {
     try{
       this.setState({ loading: true })
+      this.setState({ scrollX: window.scrollX, scrollY: window.scrollY, newLoad: true});
       const { data : { results, page, total_pages }} = await this.loadMovies();
-      console.log('res' , results);
       this.setState({
         movies: [...this.state.movies, ...results],
         loading: false,
@@ -142,25 +149,29 @@ class App extends Component {
         totalPages: total_pages,
         image: `${IMAGE_BASE_URL}/${BACKDROP_SIZE}/${results[0].backdrop_path}`,
         mTitle: results[0].title,
-        mDesc: results[0].overview
+        mDesc: results[0].overview,
+        newLoad: false
       })
     } catch(e) {
       console.log('error load more', e);
     }
-    //lancer une requète
-    console.log('load more');
   }
-
 
   render(){
     return (
-      <div className="App">
-        <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc="images/quickmovie.svg" />
-        <Home
-          {...this.state}
-          onSearchClick={this.handleSearch}
-        />
-      </div>
+      <Router>
+        <div className="App">
+          <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc="images/quickmovie.svg" />
+          <Switch>
+            <Route path="/">
+              <Home
+                  {...this.state}
+                  onSearchClick={this.handleSearch}
+                />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
