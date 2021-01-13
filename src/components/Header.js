@@ -27,7 +27,11 @@ class HeaderComponent extends Component {
                             <li>Series</li>
                             <li>Films</li>
                             <li>Nouveautés</li>
-                            <li>Ma liste</li>
+                            <li>
+                                <Link to={{ pathname: "/player"}}>
+                                    Ma Liste
+                                </Link>
+                            </li>
                         </ul>
                     </nav>
                 </div>

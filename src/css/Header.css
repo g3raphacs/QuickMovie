@@ -43,7 +43,11 @@
   display: block;
   padding: 4px 1vw;
 }
-.header--left .header--menu ul li:hover{
-  cursor: pointer;
+.header--left .header--menu ul li a{
+  text-decoration: none;
+  color: white;
+}
+.header--left .header--menu ul li a:hover{
+  text-decoration: none;
   color:violet
 }

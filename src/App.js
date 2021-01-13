@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router , Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router , Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
 import { Header ,LoadButton } from './components';
-import { Home, Details, NotFound } from './routes';
+import { Home, Details, NotFound, MoviePlayer } from './routes';
 import './App.css';
 import {API_URL , API_KEY, IMAGE_BASE_URL ,BACKDROP_SIZE} from './config'
 
@@ -137,9 +137,11 @@ class App extends Component {
                   />
               </Route>
 
-              <Route exact path="/:id" render={(props)=><Details {...props}/>}>
+              <Route exact path="/player"  render={(props)=><MoviePlayer {...props}/>}></Route>
 
-              </Route>
+              <Route exact path="/player/:id"  render={(props)=><MoviePlayer {...props}/>}></Route>
+
+              <Route exact path="/:id" render={(props)=><Details {...props}/>}></Route>
 
               <Route>
                   <NotFound/>
