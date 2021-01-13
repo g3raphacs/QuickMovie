@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router , Route, Switch, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
 import { Header ,LoadButton } from './components';
 import { Home, Details, NotFound } from './routes';
@@ -118,33 +120,35 @@ class App extends Component {
 
   render(){
     return (
-      <Router>
-        <div className="App">
-          <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc= {'/images/quickmovie.svg'} />
-          {!this.state.image ? (
-            <div className="fullscreenLoad">
-              <LoadButton loading={this.state.loading}/>
-            </div>
-          ) : (
-          <Switch>
-            <Route exact path="/">
-              <Home
-                  {...this.state}
-                  onSearchClick={this.handleSearch}
-                />
-            </Route>
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Header onSearchButton={this.toggleSearchButton} searching={this.state.searching} imgSrc= {'/images/quickmovie.svg'} />
+            {!this.state.image ? (
+              <div className="fullscreenLoad">
+                <LoadButton loading={this.state.loading}/>
+              </div>
+            ) : (
+            <Switch>
+              <Route exact path="/">
+                <Home
+                    {...this.state}
+                    onSearchClick={this.handleSearch}
+                  />
+              </Route>
 
-            <Route exact path="/:id" render={(props)=><Details {...props}/>}>
-              
-            </Route>
+              <Route exact path="/:id" render={(props)=><Details {...props}/>}>
 
-            <Route>
-                <NotFound/>
-            </Route>
-          </Switch>
-          )}
-        </div>
-      </Router>
+              </Route>
+
+              <Route>
+                  <NotFound/>
+              </Route>
+            </Switch>
+            )}
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

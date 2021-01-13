@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addMovie, removeMovie } from '../actions/movie'
 
 import '../css/Poster.css'
 
-class Poster extends Component {
+class PosterComponent extends Component {
     state = {
         hover: false
     }
@@ -21,10 +23,12 @@ class Poster extends Component {
     }
     add = () => {
         //implementer avec Redux
+        this.props.addM(this.props.movie);
         console.log('add to wishlist')
     }
     remove = () => {
         //implementer avec Redux
+        this.props.removeM(this.props.id);
         console.log('remove from wishlist')
     }
 
@@ -56,5 +60,12 @@ class Poster extends Component {
     }
 
 }
+const mapDispatchToProps = dispatch => {
+    return {
+        addM: movie => dispatch(addMovie(movie)),
+        removeM: movieId => dispatch(removeMovie(movieId))
+    }
+}
+const Poster = connect(null,mapDispatchToProps)(PosterComponent);
 
 export { Poster }

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getNumber } from '../actions/movie'
 
 
 import '../css/Header.css';
 import { SearchButton } from './SearchButton';
 
-class Header extends Component {
+class HeaderComponent extends Component {
+    componentDidMount(){
+        this.props.getNumber();
+    }
     render(){
         const { searching } = this.props;
         return (
@@ -35,5 +40,19 @@ class Header extends Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        badge: state.movies.number
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getNumber: () => dispatch(getNumber())
+    }
+}
+const Header = connect(mapStateToProps , mapDispatchToProps)(HeaderComponent);
+
 
 export { Header };

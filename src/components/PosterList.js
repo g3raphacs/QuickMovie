@@ -5,11 +5,21 @@ import { IMAGE_BASE_URL , POSTER_SIZE} from '../config'
 
 import '../css/PosterList.css'
 
+
+let whish;
+
 class PosterList extends Component{
     renderPoster = () => {
         return this.props.movies.map(movie =>{
             const imgSrc = `${IMAGE_BASE_URL}/${POSTER_SIZE}/${movie.poster_path}`;
-            const whish = false;
+            whish = false;
+            if(this.props.localMovies){
+                this.props.localMovies.forEach(localMovie => {
+                    if(movie.id === localMovie.id){
+                        whish = true
+                    }
+                })
+            }
             return (
                 <Poster 
                     key={movie.id}
