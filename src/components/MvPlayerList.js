@@ -26,7 +26,6 @@ class MvPlayerList extends Component{
             <div className="mvPlayerList">
                 <div className="mvPlayerList--header">
                     <h3>{this.props.selectedMovie.title}</h3>
-                    <div className="mvPlayerList--badge"></div>
                 </div>
                 <div className="mvPlayerList--list">{this.renderList(this.props)}</div>
             </div>

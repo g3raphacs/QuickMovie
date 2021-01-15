@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getNumber } from '../actions/movie'
+import { getNumber } from '../actions/movie';
+import { MenuLink } from './index';
 
 
 import '../css/Header.css';
@@ -24,14 +25,10 @@ class HeaderComponent extends Component {
                     
                     <nav className="header--menu">
                         <ul>
-                            <li>Series</li>
-                            <li>Films</li>
-                            <li>Nouveautés</li>
-                            <li>
-                                <Link to={{ pathname: "/player"}}>
-                                    Ma Liste
-                                </Link>
-                            </li>
+                            <MenuLink path="/films" label="Films"/>
+                            <MenuLink path="/series" label="Series"/>
+                            <MenuLink path="/maliste" label="Ma liste"/>
+                            <MenuLink path="/player" label="Regarder"/>
                         </ul>
                     </nav>
                 </div>
