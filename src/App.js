@@ -133,6 +133,7 @@ class App extends Component {
               <Route exact path="/">
                 <Home
                     {...this.state}
+                    title="Nouveautés"
                     onSearchClick={this.handleSearch}
                   />
               </Route>
