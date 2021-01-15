@@ -35,9 +35,10 @@ class PosterList extends Component{
     }
 
     render(){
+        console.log(this.props.title)
         return(
             <div className="posterList">
-                <h3 className="posterList--title">Nouveautés</h3>
+                <h3 className="posterList--title">{this.props.title}</h3>
                 <div className="posterList--grid">
                     {this.renderPoster()}
                 </div>

@@ -10,7 +10,7 @@ class HomeComponent extends Component{
         this.props.getMovies();
     }
     render(){
-        const { mTitle, mDesc, image, movies, loading, searching } = this.props;
+        const { mTitle, mDesc, image, movies, loading, searching, title} = this.props;
         return(
             <div>
                 <HeaderImg
@@ -18,7 +18,7 @@ class HomeComponent extends Component{
                     overview={mDesc}
                     imgSrc={image}
                 />
-                <PosterList movies={movies} localMovies={this.props.localMovies}/>
+                <PosterList title={title} movies={movies} localMovies={this.props.localMovies}/>
                 <LoadButton loading={loading}/>
                 <SearchBar searching={searching} onSearchClick={this.props.onSearchClick}/>
             </div>
